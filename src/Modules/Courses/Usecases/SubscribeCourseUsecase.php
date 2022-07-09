@@ -24,6 +24,15 @@ class SubscribeCourseUsecase extends BaseUsecase implements SubscribeCourseUseca
     public function handle(int $user_id, int $course_id)
     {
         $this->response = $this->courseRepository->subscribe($course_id, $user_id);
+	$course = \App\Entities\Course::findOrFail($course_id);
+	
+	foreach($course->lessons as $lesson) {
+		\App\Entities\Attendance::create([
+			'lesson_id' => $lesson->id,
+			'user_id' => $user_id,
+			'status' => false
+		])->save();
+	}
 
         return $this->parseResponse();
     }

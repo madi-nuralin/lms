@@ -30,8 +30,8 @@
                             <span class="help-block">
                                 <strong class="text-danger">{{ $errors->first('content') }}</strong>
                             </span>
-                        @endif
-                    </div>
+			@endif
+		    </div>
                     <!-- /.card-body -->
                     <div class="col-12">
                         <a href="{{ route('courses.index') }}" class="btn btn-secondary">@lang('general.cancel')</a>

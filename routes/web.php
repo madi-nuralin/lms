@@ -22,6 +22,7 @@ Route::group( ['middleware' => ['auth']], function() {
     Route::resource('roles', 'RoleController');
     Route::resource('lessons', 'LessonController')->except('create');
     Route::get('/lessons/create/{course}', 'LessonController@create')->name('lessons.create');
+    Route::put('/lessons/{lesson}/attendance/update', 'AttendanceController@update')->name('attendance.update');
 });
 
 
