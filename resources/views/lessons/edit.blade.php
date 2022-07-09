@@ -11,7 +11,7 @@
                 {{ Form::open(['url' => route('lessons.update', $lesson->id)]) }}
                 {{ Form::hidden('course_id', $lesson->course_id) }}
                 @method('PUT')
-                <div class="card card-primary">
+		<div class="card card-primary">
                     <div class="card-header">
                         <h3 class="card-title">@lang('lesson/fields.courses')</h3>
                     </div>

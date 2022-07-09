@@ -22,6 +22,11 @@ class Lesson extends Model
         return $this->belongsTo(Course::class);
     }
 
+    public function attendances() : HasMany
+    {
+	return $this->hasMany(Attendance::class);
+    }
+
     public function content()
     {
         return $this->larabergContent();
