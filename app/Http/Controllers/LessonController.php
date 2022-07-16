@@ -54,7 +54,7 @@ class LessonController extends Controller
         try {
             $result = $createLessonUsecase->handle($request->all(), auth()->user()->id);
             if($result['data']){
-                flash('Clase creada correctamente');
+                flash(__('lesson/messages.created'));
             } else {
                 flash(implode('-', $result['errors']), 'error');
                 throw new \Exception('error create course');
@@ -111,9 +111,9 @@ class LessonController extends Controller
     {
         try {
             $updateLessonUsescase->handle($id, $request->all());
-            flash('Lección guardada correctamente');
+            flash(__('lesson/messages.updated'));
         } catch (\Exception $e){
-            flash('No se ha podido guardar la lección', 'error');
+            flash(__('lesson/messages.cannot_update'), 'error');
         }
         return  redirect()->back();
     }
@@ -129,9 +129,9 @@ class LessonController extends Controller
     {
         try {
             $deleteLessonUsescase->handle($id);
-            flash('Lección eliminada correctamente');
+            flash('lesson/messages.deleted');
         } catch (\Exception $e){
-            flash('No se ha podido eliminar la lección', 'error');
+            flash('lesson/messages.cannot_delete', 'error');
         }
         return redirect()->back();
     }

@@ -11,6 +11,8 @@
 |
 */
 
+Route::get('locale/{locale}', ['as' => 'locale.switch', 'uses' => 'LocaleController@switch']);
+
 Route::get('/', 'HomeController@index')->name('home')->middleware('verified');
 
 Auth::routes(['verify' => true]);

@@ -19,7 +19,7 @@
                             <div class="col-sm-4 border-right">
                                 <div class="description-block">
                                     <h5 class="description-header">{{ $course->students()->count() }}</h5>
-                                    <span class="description-text">STUDENTS</span>
+                                    <span class="description-text">{{ __('general.students') }}</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>
@@ -34,7 +34,7 @@
                             <div class="col-sm-4">
                                 <div class="description-block">
                                     <h5 class="description-header">{{ $course->lessons->count() }}</h5>
-                                    <span class="description-text">LESSONS</span>
+                                    <span class="description-text">{{ __('general.lessons')}}</span>
                                 </div>
                                 <!-- /.description-block -->
                             </div>

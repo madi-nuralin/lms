@@ -28,14 +28,14 @@
             </li>
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
-                    <i class="nav-icon fas fa-home"></i> {{ __('Home') }}
+                    <i class="nav-icon fas fa-home"></i> {{ __('general.home') }}
                 </a>
             </li>
 
             <li class="nav-item d-none d-sm-inline-block">
                 <a href="{{ route('stream') }}" class="nav-link  {{ is_active('stream') }}">
                     <i class="nav-icon fas fa-play"></i>
-                    {{ __('Stream') }}
+                    {{ __('general.stream') }}
                     <span class="right badge badge-danger">New</span>
                 </a>
             </li>
@@ -44,7 +44,7 @@
         <!-- SEARCH FORM -->
         <form class="form-inline ml-3">
             <div class="input-group input-group-sm">
-                <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control form-control-navbar" type="search" placeholder="{{ __('general.search') }}" aria-label="Search">
                 <div class="input-group-append">
                     <button class="btn btn-navbar" type="submit">
                         <i class="fas fa-search"></i>
@@ -52,8 +52,24 @@
                 </div>
             </div>
         </form>
-
-
+	<div class="dropdown">
+		<button 
+			class="btn dropdown-toggle"
+			type="button"
+			id="dropdownMenuButton"
+			data-toggle="dropdown"
+			aria-haspopup="true"
+			aria-expanded="false">
+			<i class="fa fa-language"></i>
+		</button>
+		<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			@foreach (Config::get('app.locales') as $locale)
+				<a class="dropdown-item" href="{{ route('locale.switch', ['locale' => $locale]) }}">
+					{{ __("locales.{$locale}") }}
+				</a>
+			@endforeach
+		</div>
+	</div>
     </nav>
     <!-- /.navbar -->
 
@@ -84,7 +100,7 @@
                         <a href="{{ route('home') }}" class="nav-link {{ is_active('home') }}">
                             <i class="nav-icon fas fa-home"></i>
                             <p>
-                                {{ __('Home') }}
+                                {{ __('general.home') }}
                             </p>
                         </a>
                     </li>
@@ -92,7 +108,7 @@
                         <a href="{{ route('stream') }}" class="nav-link  {{ is_active('stream') }}">
                             <i class="nav-icon fas fa-play"></i>
                             <p>
-                                {{ __('Stream') }}
+                                {{ __('general.stream') }}
                                 <span class="right badge badge-danger">New</span>
                             </p>
                         </a>
@@ -124,7 +140,7 @@
                                                      document.getElementById('logout-form').submit();">
                             <i class="nav-icon fas fa-power-off red"></i>
                             <p>
-                                {{ __('Logout') }}
+                                {{ __('general.logout') }}
                             </p>
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -180,11 +196,11 @@
     <!-- Main Footer -->
     <footer class="main-footer">
         <!-- To the right -->
-        <div class="float-right d-none d-sm-inline">
+        <!--div class="float-right d-none d-sm-inline">
             {{  Config::get('settings.name') }}
-        </div>
+        </div-->
         <!-- Default to the left -->
-        <strong>Copyright &copy; {{ \Carbon\Carbon::now()->year }} <a href=""></a>.</strong> All rights reserved.
+        <!--strong>Copyright &copy; {{ \Carbon\Carbon::now()->year }} <a href=""></a>.</strong> All rights reserved.-->
     </footer>
 </div>
 <!-- ./wrapper -->

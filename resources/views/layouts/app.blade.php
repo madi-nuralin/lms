@@ -47,11 +47,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('auth.login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('auth.register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -73,7 +73,26 @@
                                 </div>
                             </li>
                         @endguest
-                    </ul>
+		    </ul>
+
+		<div class="dropdown">
+			<button 
+				class="btn dropdown-toggle"
+				type="button"
+				id="dropdownMenuButton"
+				data-toggle="dropdown"
+				aria-haspopup="true"
+				aria-expanded="false">
+				<i class="fa fa-language"></i>
+			</button>
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				@foreach (Config::get('app.locales') as $locale)
+					<a class="dropdown-item" href="{{ route('locale.switch', ['locale' => $locale]) }}">
+						{{ __("locales.{$locale}") }}
+					</a>
+				@endforeach
+			</div>
+		</div>
                 </div>
             </div>
         </nav>

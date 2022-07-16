@@ -40,7 +40,7 @@
 		@else
 		    <div class="card">
 			<div class="card-header">
-				Attendance: {{ $lesson->attendances->firstWhere('user_id', auth()->user()->id)->status }}/1
+				{{ __('lesson/fields.attendance') }}: {{ $lesson->attendances->firstWhere('user_id', auth()->user()->id)->status }}/1
 			</div>
 		    </div>
 		@endif
